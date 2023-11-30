@@ -1,0 +1,22 @@
+*.sln
+/Library
+/Logs
+/obj
+/.vscode
+/UserSettings
+/Temp
+/.idea
+*.csproj
+Assets/.DS_Store
+Packages/packages-lock.json
+Assets/Scripts/.DS_Store
+/Data/GeneratedScripts
+.vs/ThisIsMyOregon/FileContentIndex
+.vs/ThisIsMyOregon/v17
+ProjectSettings
+Marcus Shooting!/Assets/Pixel Adventure 1
+Marcus Shooting!/Library
+Marcus Shooting!/Logs
+Marcus Shooting!/Temp
+Marcus Shooting!/.vs
+Marcus Shooting!/obj
