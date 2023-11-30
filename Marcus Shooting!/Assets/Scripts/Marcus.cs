@@ -8,7 +8,7 @@ public class Marcus : MonoBehaviour
     private Animator _anim;
 
     private float _speed = 2f;
-    private float _jumpForce = 10f;
+    private float _jumpForce = 12f;
     private float _horizontalVal;
     private float _modelScale = 6f;
     private float _runSpeedTime = 2f;
@@ -19,6 +19,9 @@ public class Marcus : MonoBehaviour
     private bool _isRunning;
     private bool _isGrounded;
     private bool _isJump;
+    private bool _isPaused;
+
+    public bool playerDirection { get; private set; } = true; //false: left, true: right, 
 
     private void Awake()
     {
@@ -43,8 +46,13 @@ public class Marcus : MonoBehaviour
             _anim.SetBool("Jump", true);
             _isJump = true;
         }
-        Debug.Log(_isJump);
         _anim.SetFloat("yVelocity", _rb.velocity.y);
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            _isPaused = !_isPaused;
+            Time.timeScale = _isPaused ? 0 : 1;
+        }
     }
 
     void FixedUpdate()
@@ -79,10 +87,12 @@ public class Marcus : MonoBehaviour
         if (direction < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1) * _modelScale;
+            playerDirection = false;
         }
         else if (direction > 0)
         {
             transform.localScale = new Vector3(1, 1, 1) * _modelScale;
+            playerDirection = true;
         }
 
         _anim.SetFloat("xVelocity", Mathf.Abs(direction));
@@ -91,6 +101,7 @@ public class Marcus : MonoBehaviour
         #region jump
         if (_isGrounded && _isJump)
         {
+            AudioManager.Instance.PlaySFX("Land");
             _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             _isJump = false;
         }
