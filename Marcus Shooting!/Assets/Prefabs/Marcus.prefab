@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2757246182704082369}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,8 +44,9 @@ GameObject:
   - component: {fileID: 2239272113948783946}
   - component: {fileID: -9190071882573564435}
   - component: {fileID: -2046216372384920181}
+  - component: {fileID: 7104709340716826005}
   - component: {fileID: 4625875795229691850}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Marcus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,8 +180,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.32, y: 0.32}
+  m_Offset: {x: 0.005, y: -0.02}
+  m_Size: {x: 0.18, y: 0.25}
   m_Direction: 0
 --- !u!114 &-2046216372384920181
 MonoBehaviour:
@@ -197,7 +198,21 @@ MonoBehaviour:
   _groundCheck: {fileID: 2757246182704082369}
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 192
+--- !u!114 &7104709340716826005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8215298402479314923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27178010ba5f56746999cc8381b48771, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 8203355056523009456, guid: c3be9dd54d4f8dd4bb6628965b19ef74, type: 3}
+  shellPrefab: {fileID: 8203355056523009456, guid: 1b8f3bf0fe93fba49b33a2473c01d310, type: 3}
 --- !u!95 &4625875795229691850
 Animator:
   serializedVersion: 5

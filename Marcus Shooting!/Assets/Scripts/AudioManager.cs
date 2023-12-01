@@ -47,9 +47,9 @@ public class AudioManager : MonoBehaviour
             //case "Run":
             //    SoundObjectCreation(run);
             //    break;
-            case "Land":
-                SoundObjectCreation(land, "Land");
-                break;
+            //case "Land":
+            //    SoundObjectCreation(land, "Land");
+            //    break;
             //case "Shoot":
             //    SoundObjectCreation(shoot);
             //    break;

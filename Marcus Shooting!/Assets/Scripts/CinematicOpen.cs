@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CinematicOpen : MonoBehaviour
 {
-    public Material _cinematicMaterial;
+    private Material _cinematicMaterial;
     private float _duration = 2.0f; 
     private void Awake()
     {
-        //if (!_cinematicMaterial) _cinematicMaterial = GetComponent<SpriteRenderer>().materials[0];
+        if (!_cinematicMaterial) _cinematicMaterial = GetComponent<SpriteRenderer>().materials[0];
     }
 
     private void Start()
@@ -19,10 +19,10 @@ public class CinematicOpen : MonoBehaviour
     IEnumerator OpenCinematic()
     {
         float time = 0;
-        float currentRate = _cinematicMaterial.GetFloat("OpenRate");
+        float currentRate = _cinematicMaterial.GetFloat("_OpenRate");
         while (time < _duration)
         {
-            _cinematicMaterial.SetFloat("OpenRate", Mathf.Lerp(currentRate, 1, time / _duration));
+            _cinematicMaterial.SetFloat("_OpenRate", Mathf.Lerp(currentRate, 1, time / _duration));
             //Debug.Log(_cinematicMaterial.GetFloat("OpenSpeed"));
             time += Time.deltaTime;
             yield return null;
