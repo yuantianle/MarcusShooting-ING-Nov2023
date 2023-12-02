@@ -21,7 +21,7 @@ public class Marcus : MonoBehaviour
     private bool _isJump;
     private bool _isPaused;
     public bool _isRecoil;
-    private float recoilForce = 10f;
+    public float recoilForce = 10f;
 
     public bool playerDirection { get; private set; } = true; //false: left, true: right, 
 
@@ -103,7 +103,7 @@ public class Marcus : MonoBehaviour
         #region jump
         if (_isGrounded && _isJump)
         {
-            AudioManager.Instance.PlaySFX("Land");
+            AudioManager.Instance.PlayMarcusSFX("Land");
             _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             _isJump = false;
         }

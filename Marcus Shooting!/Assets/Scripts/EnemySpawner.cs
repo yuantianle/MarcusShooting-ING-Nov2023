@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    private int _enemyCount = 10;
+    public int _enemyCount = 1;
     private float _spawnDelay = 2.0f;
 
     void Start()
@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int i = 0; i < _enemyCount; i++)
         {
-            Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+            Instantiate(enemyPrefab, transform.position, Quaternion.identity, transform);
             yield return new WaitForSeconds(_spawnDelay);
         }
     }
