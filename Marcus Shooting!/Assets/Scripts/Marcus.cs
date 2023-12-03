@@ -78,6 +78,7 @@ public class Marcus : MonoBehaviour
     void Move(float direction)
     {
         #region movement
+
         float velocityX = direction * _speed * 100 * Time.fixedDeltaTime;
         if (_isRunning)
         {
@@ -98,12 +99,14 @@ public class Marcus : MonoBehaviour
         }
 
         _anim.SetFloat("xVelocity", Mathf.Abs(direction));
+
+
         #endregion
 
         #region jump
         if (_isGrounded && _isJump)
         {
-            AudioManager.Instance.PlayMarcusSFX("Land");
+            AudioManager.Instance.PlayMarcusSFX("Jump");
             _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             _isJump = false;
         }
@@ -116,5 +119,10 @@ public class Marcus : MonoBehaviour
         }
 
         #endregion
+    }
+
+    public void PlayWalkSound()
+    {
+        if (Mathf.Abs(_rb.velocity.x) >= 2.4f) AudioManager.Instance.PlayMarcusSFX("Walk");
     }
 }

@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponName: MaskinPistol
-  _fireRate: 0
   _bulletSpeed: 20
   _bulletsPerSecond: 20
   _cameraShakeDuration: 0.2
@@ -56,6 +55,10 @@ MonoBehaviour:
   _recoilForce: 7
   _explosionProbability: 1
   _explosionRadius: 20
+  _bulletPrefab: {fileID: 8203355056523009456, guid: 1f826db8093babb44a15b6d8ec1ddda8, type: 3}
+  _gunFirePositionOffset: {x: 0, y: 0, z: 0}
+  _gunFireEffect: {fileID: 8744476887960966432, guid: db54dfac58e14ea4680bbaa899b8e637, type: 3}
+  _shellPrefab: {fileID: 8203355056523009456, guid: 4ff1b70858fabe84c88b1e3ff29c0919, type: 3}
 --- !u!212 &-2788302630296050774
 SpriteRenderer:
   m_ObjectHideFlags: 0

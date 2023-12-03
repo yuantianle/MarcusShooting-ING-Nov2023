@@ -200,6 +200,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   _isRecoil: 0
+  recoilForce: 10
 --- !u!114 &7104709340716826005
 MonoBehaviour:
   m_ObjectHideFlags: 0

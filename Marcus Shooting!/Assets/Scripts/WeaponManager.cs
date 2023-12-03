@@ -38,6 +38,7 @@ public class WeaponManager : MonoBehaviour
             _instantiatedWeapons[_currentWeaponIndex].SetActive(false);
             _currentWeaponIndex = (_currentWeaponIndex + 1) % _instantiatedWeapons.Count;
             _instantiatedWeapons[_currentWeaponIndex].SetActive(true);
+            AudioManager.Instance.PlayWeaponSFX("WeaponSwitch");
             UpdateWeapon();
         }
     }
@@ -60,14 +61,10 @@ public class WeaponManager : MonoBehaviour
         _weaponPreviousPositions[_currentWeaponIndex] = currentWeapon.transform.position;
     }
 
+    // trigger to the child instance for weapon parameters update
     private void UpdateWeapon()
     {
         Weapon currentWeapon = _instantiatedWeapons[_currentWeaponIndex].GetComponent<Weapon>();
-        _player.GetComponent<BulletShooter>().bulletSpeed = currentWeapon.GetComponent<Weapon>().bulletSpeed;
-        _player.GetComponent<BulletShooter>().bulletsPerSecond = currentWeapon.GetComponent<Weapon>().bulletsPerSecond;
-        _player.GetComponent<BulletShooter>().cameraShakeDuration = currentWeapon.GetComponent<Weapon>().cameraShakeDuration;
-        _player.GetComponent<BulletShooter>().cameraShakeMagnitude = currentWeapon.GetComponent<Weapon>().cameraShakeMagnitude;
-        _player.GetComponent<BulletShooter>().numTrack = currentWeapon.GetComponent<Weapon>().numTrack;
         _player.GetComponent<Marcus>().recoilForce = currentWeapon.GetComponent<Weapon>().recoilForce;
     }
 }

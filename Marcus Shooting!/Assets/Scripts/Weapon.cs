@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Weapon: MonoBehaviour
 {
     [SerializeField] private string _weaponName = "Weapon";
-    [SerializeField] private float _fireRate = 1f;
     [SerializeField] private float _bulletSpeed = 20f;
     [SerializeField] private float _bulletsPerSecond = 10f;
     [SerializeField] private float _cameraShakeDuration = 0.1f;
@@ -15,9 +17,12 @@ public class Weapon: MonoBehaviour
     [SerializeField] private int _recoilForce = 10; // recoil force
     [SerializeField] private float _explosionProbability = 0f; // probability of explosion: 0-1
     [SerializeField] private float _explosionRadius = 0f; // explosion radius
+    [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private Vector3 _gunFirePositionOffset = Vector3.zero;
+    [SerializeField] private GameObject _gunFireEffect;
+    [SerializeField] private GameObject _shellPrefab;
 
     public string weaponName { get { return _weaponName; } private set { _weaponName = value; } }
-    public float fireRate { get { return _fireRate; } private set { _fireRate = value; } }
     public float bulletSpeed { get { return _bulletSpeed; } private set { _bulletSpeed = value; } }
     public float bulletsPerSecond { get { return _bulletsPerSecond; } private set { _bulletsPerSecond = value; } }
     public float cameraShakeDuration { get { return _cameraShakeDuration; } private set { _cameraShakeDuration = value; } }
@@ -30,6 +35,12 @@ public class Weapon: MonoBehaviour
     public float explosionProbability { get { return _explosionProbability; } private set { _explosionProbability = value; } }
     public float explosionRadius { get { return _explosionRadius; } private set { _explosionRadius = value; } }
 
+    public GameObject bulletPrefab { get { return _bulletPrefab; } private set { _bulletPrefab = value; } }
 
+    public Vector3 gunFirePositionOffset { get { return _gunFirePositionOffset; } private set { _gunFirePositionOffset = value; } }
+
+    public GameObject gunFireEffect { get { return _gunFireEffect; } private set { _gunFireEffect = value; } }
+
+    public GameObject shellPrefab { get { return _shellPrefab; } private set { _shellPrefab = value; } }
 
 }

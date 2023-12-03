@@ -11,11 +11,13 @@ public class EnemyAI : MonoBehaviour
     private bool _isDead = false;
     private bool _hasHitGround = false;
     private bool _hasHitWall = false;
+    private Material _material;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         _moveDirection = new Vector3(Random.Range(-1f, 1f), 0, 0).normalized;
+        _material = GetComponent<SpriteRenderer>().material;
     }
 
     private void Update()
@@ -50,7 +52,20 @@ public class EnemyAI : MonoBehaviour
             animator.SetBool("IsDead", true);
             _isDead = true;
             moveSpeed = 0;
-            
+            StartCoroutine(FadeOut());
+        }
+    }
+    IEnumerator FadeOut()
+    {
+        float duration = 10f;
+        float target = 0.8f;
+        float t = 0f;
+        float startValue = _material.GetFloat("_DieRate");
+        while (t < duration)
+        {
+            _material.SetFloat("_DieRate", Mathf.Lerp(startValue, target, t / duration));
+            t += Time.deltaTime;
+            yield return null;
         }
     }
 
