@@ -53,8 +53,8 @@ MonoBehaviour:
   _weight: 4
   _numTrack: 1
   _recoilForce: 7
-  _explosionProbability: 1
-  _explosionRadius: 20
+  _explosionProbability: 0
+  _explosionRadius: 1
   _bulletPrefab: {fileID: 8203355056523009456, guid: 1f826db8093babb44a15b6d8ec1ddda8, type: 3}
   _gunFirePositionOffset: {x: 0, y: 0, z: 0}
   _gunFireEffect: {fileID: 8744476887960966432, guid: db54dfac58e14ea4680bbaa899b8e637, type: 3}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9cfe92499881fff49a9c7a7f90ca6f13, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

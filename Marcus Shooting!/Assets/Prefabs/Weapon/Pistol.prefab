@@ -53,8 +53,8 @@ MonoBehaviour:
   _weight: 0.1
   _numTrack: 1
   _recoilForce: 3
-  _explosionProbability: 1
-  _explosionRadius: 3
+  _explosionProbability: 0
+  _explosionRadius: 1
   _bulletPrefab: {fileID: 8203355056523009456, guid: c3be9dd54d4f8dd4bb6628965b19ef74, type: 3}
   _gunFirePositionOffset: {x: 0, y: 0, z: 0}
   _gunFireEffect: {fileID: 8744476887960966432, guid: db54dfac58e14ea4680bbaa899b8e637, type: 3}

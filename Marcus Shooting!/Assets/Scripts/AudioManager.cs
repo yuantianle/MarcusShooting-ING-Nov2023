@@ -83,13 +83,14 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private void SoundObjectCreation(AudioClip clip, string name, float volume, float pitch)
+    private void SoundObjectCreation(AudioClip clip, string name, float volume, float pitch, bool isloop = false)
     {
         GameObject soundObject = Instantiate(this.soundObject, transform);
         soundObject.GetComponent<AudioSource>().clip = clip;
         soundObject.GetComponent<AudioSource>().name = name;
         soundObject.GetComponent<AudioSource>().volume = volume;
         soundObject.GetComponent<AudioSource>().pitch = pitch;
+        soundObject.GetComponent<AudioSource>().loop = isloop;
         soundObject.GetComponent<AudioSource>().Play();
     }
 

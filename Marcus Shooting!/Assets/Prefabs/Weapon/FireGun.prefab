@@ -45,19 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983df7719aa3daf4e9c24a668812f5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _weaponName: TripleGun
-  _bulletSpeed: 50
+  _weaponName: FireGun
+  _bulletSpeed: 10
   _bulletsPerSecond: 1
   _cameraShakeDuration: 0.3
   _cameraShakeMagnitude: 0.9
   _weight: 7
   _numTrack: 1
-  _recoilForce: 12
-  _explosionProbability: 0
-  _explosionRadius: 0
+  _recoilForce: 1
+  _explosionProbability: 0.5
+  _explosionRadius: 1
   _bulletPrefab: {fileID: 8203355056523009456, guid: 5b5316a0805fbfd46bb680163a0b102a, type: 3}
   _gunFirePositionOffset: {x: 0, y: 0, z: 0}
-  _gunFireEffect: {fileID: 8744476887960966432, guid: db54dfac58e14ea4680bbaa899b8e637, type: 3}
+  _gunFireEffect: {fileID: 8744476887960966432, guid: c864463cf07bdef438ad1ef50b43965e, type: 3}
   _shellPrefab: {fileID: 8203355056523009456, guid: 1b8f3bf0fe93fba49b33a2473c01d310, type: 3}
 --- !u!212 &-2788302630296050774
 SpriteRenderer:
