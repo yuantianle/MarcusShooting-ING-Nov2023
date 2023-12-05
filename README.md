@@ -55,7 +55,7 @@ This is a project talking about how to improve the game experience from small de
 - [x]  Random shooting explosion
 - [x]  Bigger explosion
 - [x]  Explosion smoke
-- [x]  All visual effects
+- [x]  All VFX & Shaders & 2D Lighting
 
 ### UI
 - [x]  Instruction
