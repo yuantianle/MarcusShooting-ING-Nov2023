@@ -1,9 +1,12 @@
 # MarcusShooting-Nov2023
 
-## 0. Quick Review
+This is a project talking about how to improve the game experience from small details optimization.
+
+## 0. Quick Pics
 ![image](https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/8ec8a863-d0f7-4b3d-907e-06ceafe72ebc)
 ![image](https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/75693d61-a257-4793-908e-de3f0706bb73)
 ![image](https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/b2e74a8a-e557-4319-99e6-6ed66a2693ef)
+![image](https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/59b81fb9-c03e-4a0f-b9f5-8319274d9c6d)
 
 ## 1. Game Design
 ![image](https://github.com/yuantianle/SimpleShootingGame-ING-Nov2023/assets/61530469/309d7f62-902f-4035-9f7e-91d6a0e25ed0)
@@ -56,3 +59,7 @@
 
 ### UI
 - [x]  Instruction
+
+
+## Reference
+[Jan Willem Nijman - Vlambeer - "The art of screenshake" at INDIGO Classes 2013](https://www.youtube.com/watch?v=AJdEqssNZ-U)
