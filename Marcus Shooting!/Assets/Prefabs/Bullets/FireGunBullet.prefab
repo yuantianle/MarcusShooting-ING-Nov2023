@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5973666936153487073}
   - component: {fileID: 5009329052244848894}
   - component: {fileID: 6307916413021942175}
+  - component: {fileID: 5617980614980666545}
   m_Layer: 8
   m_Name: Aim
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2005516093
   m_SortingLayer: 2
-  m_SortingOrder: 10
+  m_SortingOrder: 11
   m_Sprite: {fileID: -1869290018219920624, guid: 3421078018dc3934a8c1ab3b7bf89aa0, type: 3}
   m_Color: {r: 0.6698113, g: 0, b: 0.04011646, a: 1}
   m_FlipX: 0
@@ -94,7 +95,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4507737194666013097}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -105,10 +106,10 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: b73aadc992ccdda42b091df934465050, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 640
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1911
+    m_Bits: 3447
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -145,9 +146,26 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.61, y: 0}
-  m_Size: {x: 2.25, y: 1.51}
+  m_Offset: {x: -1.92, y: 0}
+  m_Size: {x: 5, y: 0.42}
   m_Direction: 1
+--- !u!114 &5617980614980666545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4507737194666013097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aba2fe9452ad2647bd590030b139750, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collisionEffectPrefab: {fileID: 8744476887960966432, guid: c864463cf07bdef438ad1ef50b43965e, type: 3}
+  _explosionPrefab: {fileID: 5720862684843389668, guid: 9e05ab6b0eba2c84fa3173eb5a971592, type: 3}
+  explosionProbability: 0.2
+  explosionRadius: 1
+  attack: 5
 --- !u!1 &8203355056523009456
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,7 +177,6 @@ GameObject:
   - component: {fileID: 830589523156898349}
   - component: {fileID: -3215308574528104942}
   - component: {fileID: 8962898361239170760}
-  - component: {fileID: 3335205259764040946}
   - component: {fileID: 6731886054395523721}
   - component: {fileID: 4936480311198074811}
   m_Layer: 8
@@ -178,7 +195,7 @@ Transform:
   m_GameObject: {fileID: 8203355056523009456}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2599998, y: 1.6460676, z: 0}
+  m_LocalPosition: {x: -0.87, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -205,7 +222,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 646df7bea7dab124aa5d087a501a1406, type: 2}
+  - {fileID: 2100000, guid: a57b1ae96a2ca9f42ada3627fa06ec00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -249,45 +266,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3bbe16768bc7a4fb0632b89654d006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionEffectPrefab: {fileID: 8744476887960966432, guid: db54dfac58e14ea4680bbaa899b8e637, type: 3}
-  explosionPrefab: {fileID: 5720862684843389668, guid: 9e05ab6b0eba2c84fa3173eb5a971592, type: 3}
+  _collisionEffectPrefab: {fileID: 0}
+  _explosionPrefab: {fileID: 5720862684843389668, guid: 9e05ab6b0eba2c84fa3173eb5a971592, type: 3}
   explosionProbability: 0.2
   explosionRadius: 1
---- !u!58 &3335205259764040946
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8203355056523009456}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: b73aadc992ccdda42b091df934465050, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
+  attack: 0
 --- !u!2083052967 &6731886054395523721
 VisualEffect:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance; //singleton
     //SFX & BGM
     public AudioClip jump, fall, land, walk, bgm;
-    public AudioClip weaponSwitch, pistol, maskinPistol, machineGun, fireGun, tripleGun;
+    public AudioClip weaponSwitch, pistol, maskinPistol, machineGun, fireGun, tripleGun, laserGun;
     public GameObject soundObject;
     public GameObject weaponSoundObject;
     private GameObject _bgmObject;
@@ -70,13 +70,30 @@ public class AudioManager : MonoBehaviour
                 SoundObjectCreation(maskinPistol, "Maskin Pistol", 0.7f, 1f);
                 break;
             case "MachineGun":
-                SoundObjectCreation(machineGun, "Machine Gun", 0.6f, 1f);
+                SoundObjectCreation(machineGun, "Machine Gun", 0.4f, 1f);
                 break;
             case "FireGun":
                 SoundObjectCreation(fireGun, "Fire Gun", 0.5f, 1f);
                 break;
             case "TripleGun":
                 SoundObjectCreation(tripleGun, "Triple Gun", 0.5f, 1f);
+                break;
+            case "LaserGun":
+                SoundObjectCreation(laserGun, "LaserGun", 0.6f, 1.5f, true);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void StopPlayGun(string sfxName)
+    {
+        switch (sfxName)
+        {
+            case "LaserGun":
+                //stop the laser gun sound
+                GameObject laserGun = GameObject.Find("LaserGun");
+                laserGun.GetComponent<AudioSource>().Stop();
                 break;
             default:
                 break;

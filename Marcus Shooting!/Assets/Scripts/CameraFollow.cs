@@ -7,8 +7,8 @@ public class CameraFollow : MonoBehaviour
     public GameObject target;
     private float _smoothSpeed = 0.125f;
     private Vector3 _offset = new Vector3(0, 1.5f, -10f);
-    private float _minValueX = -5.04f, _maxValueX = 6.26f;
-    private float _minValueY = -0.71f, _maxValueY = 6.11f;
+    private float _minValueX = -25f, _maxValueX = 9f;
+    private float _minValueY = -0.71f, _maxValueY = 9.11f;
     private float _directionOffset = 0;
 
     // shake camera

@@ -53,14 +53,16 @@ MonoBehaviour:
   _cameraShakeDuration: 0.3
   _cameraShakeMagnitude: 0.9
   _weight: 7
-  _numTrack: 3
-  _recoilForce: 15
+  _numTrack: 1
+  _recoilForce: 6
   _explosionProbability: 0
   _explosionRadius: 0
-  _bulletPrefab: {fileID: 8203355056523009456, guid: ae76e7e20258e6f44ba60029cbdcc34a, type: 3}
+  _bulletPrefab: {fileID: 8203355056523009456, guid: 853451ca1b3edcf4ea0d984a1894b96b, type: 3}
   _gunFirePositionOffset: {x: 0, y: 0, z: 0}
-  _gunFireEffect: {fileID: 8744476887960966432, guid: db54dfac58e14ea4680bbaa899b8e637, type: 3}
-  _shellPrefab: {fileID: 8203355056523009456, guid: 099799b5d16081646b4fed5ed144ba3c, type: 3}
+  _gunHitEffect: {fileID: 8744476887960966432, guid: db54dfac58e14ea4680bbaa899b8e637, type: 3}
+  _gunShootEffect: {fileID: 8744476887960966432, guid: 956ff41f32be2aa45a5666a53e5f6897, type: 3}
+  _shellPrefab: {fileID: 8203355056523009456, guid: d0b1f531e98d537478a9c0d8aad62f5d, type: 3}
+  _weaponAttack: 30
 --- !u!212 &-2788302630296050774
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -190,4 +192,4 @@ VFXRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2005516093
   m_SortingLayer: 2
-  m_SortingOrder: 21
+  m_SortingOrder: 22

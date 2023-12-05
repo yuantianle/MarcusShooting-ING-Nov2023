@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class Marcus : MonoBehaviour
-{   
+{
     private Rigidbody2D _rb;
     private Animator _anim;
 
@@ -22,6 +23,8 @@ public class Marcus : MonoBehaviour
     private bool _isPaused;
     public bool _isRecoil;
     public float recoilForce = 10f;
+    private bool _showGoldvfx = true;
+    private VisualEffect _goldVFX;
 
     public bool playerDirection { get; private set; } = true; //false: left, true: right, 
 
@@ -29,6 +32,7 @@ public class Marcus : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
+        _goldVFX = GetComponent<VisualEffect>();
     }
     void Update()
     {
@@ -43,7 +47,7 @@ public class Marcus : MonoBehaviour
         {
             _isRunning = false;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded )
+        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded)
         {
             _anim.SetBool("Jump", true);
             _isJump = true;
@@ -54,6 +58,13 @@ public class Marcus : MonoBehaviour
         {
             _isPaused = !_isPaused;
             Time.timeScale = _isPaused ? 0 : 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            _showGoldvfx = !_showGoldvfx;
+            if (_showGoldvfx) _goldVFX.Play();
+            else _goldVFX.Stop();
         }
     }
 
@@ -72,6 +83,15 @@ public class Marcus : MonoBehaviour
         {
             _isGrounded = true;
         }
+        //if step on enemy, enemy trigger hit animation
+        foreach (Collider2D collider in collider2Ds)
+        {
+            if (collider.CompareTag("Enemy"))
+            {
+                collider.GetComponent<EnemyAI>().GetHit(0f);
+            }
+        }
+
         _anim.SetBool("Jump", !_isGrounded);
     }
 
@@ -84,7 +104,7 @@ public class Marcus : MonoBehaviour
         {
             velocityX *= _runSpeedTime;
         }
-        Vector2  Velocity = new Vector2(velocityX, _rb.velocity.y);
+        Vector2 Velocity = new Vector2(velocityX, _rb.velocity.y);
         _rb.velocity = Velocity;
 
         if (direction < 0)

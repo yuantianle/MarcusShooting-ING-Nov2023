@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FireGunBullet
-  m_Shader: {fileID: -6465566751694194690, guid: bafea302b48f48e4aa687b47525701a7, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: f18b5cd9ae64a40419a3a4cced205788, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -42,9 +42,9 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 11.921569, g: 0.574285, b: 0.2281373, a: 0}
+    - _Color: {r: 8, g: 0.2727144, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &7083443819290243960
+--- !u!114 &2708863379372126085
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

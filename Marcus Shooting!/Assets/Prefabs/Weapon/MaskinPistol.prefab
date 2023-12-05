@@ -57,8 +57,10 @@ MonoBehaviour:
   _explosionRadius: 1
   _bulletPrefab: {fileID: 8203355056523009456, guid: 1f826db8093babb44a15b6d8ec1ddda8, type: 3}
   _gunFirePositionOffset: {x: 0, y: 0, z: 0}
-  _gunFireEffect: {fileID: 8744476887960966432, guid: db54dfac58e14ea4680bbaa899b8e637, type: 3}
+  _gunHitEffect: {fileID: 8744476887960966432, guid: d09014fcfd2cd6f4d817e3a32eca5139, type: 3}
+  _gunShootEffect: {fileID: 8744476887960966432, guid: bcffc07bbe0963d4c838b584e18ff5bf, type: 3}
   _shellPrefab: {fileID: 8203355056523009456, guid: 4ff1b70858fabe84c88b1e3ff29c0919, type: 3}
+  _weaponAttack: 5
 --- !u!212 &-2788302630296050774
 SpriteRenderer:
   m_ObjectHideFlags: 0

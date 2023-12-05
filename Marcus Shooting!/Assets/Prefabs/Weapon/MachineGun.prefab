@@ -47,18 +47,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponName: MachineGun
   _bulletSpeed: 30
-  _bulletsPerSecond: 30
+  _bulletsPerSecond: 28
   _cameraShakeDuration: 0.2
   _cameraShakeMagnitude: 0.7
   _weight: 6
   _numTrack: 1
   _recoilForce: 10
-  _explosionProbability: 0
-  _explosionRadius: 0
+  _explosionProbability: 0.8
+  _explosionRadius: 2
   _bulletPrefab: {fileID: 8203355056523009456, guid: a214dca0841f43544afe319e588e4469, type: 3}
   _gunFirePositionOffset: {x: 0, y: 0, z: 0}
-  _gunFireEffect: {fileID: 8744476887960966432, guid: db54dfac58e14ea4680bbaa899b8e637, type: 3}
+  _gunShootEffect: {fileID: 8744476887960966432, guid: 5c87fd0ca2329cd419abef5a5d0ab21a, type: 3}
   _shellPrefab: {fileID: 8203355056523009456, guid: 267173d3d8ea52b45aff27e129cf107a, type: 3}
+  _weaponAttack: 10
 --- !u!212 &-2788302630296050774
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EffectAutoDestroy : MonoBehaviour
 {
-    private float _duration = 0.2f;
+    public float _duration = 0.2f;
     private void Start()
     {
         StartCoroutine(LifecycleCoroutine());

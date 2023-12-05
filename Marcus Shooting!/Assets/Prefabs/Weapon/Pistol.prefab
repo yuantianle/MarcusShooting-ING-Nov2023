@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponName: Pistol
-  _bulletSpeed: 16
+  _bulletSpeed: 10
   _bulletsPerSecond: 10
   _cameraShakeDuration: 0.1
   _cameraShakeMagnitude: 0.3
@@ -57,8 +57,9 @@ MonoBehaviour:
   _explosionRadius: 1
   _bulletPrefab: {fileID: 8203355056523009456, guid: c3be9dd54d4f8dd4bb6628965b19ef74, type: 3}
   _gunFirePositionOffset: {x: 0, y: 0, z: 0}
-  _gunFireEffect: {fileID: 8744476887960966432, guid: db54dfac58e14ea4680bbaa899b8e637, type: 3}
+  _gunShootEffect: {fileID: 8744476887960966432, guid: 2ed7b0cec583e58488d3284789735576, type: 3}
   _shellPrefab: {fileID: 8203355056523009456, guid: f34442575370b20438e0438d901a9ffa, type: 3}
+  _weaponAttack: 1
 --- !u!212 &-2788302630296050774
 SpriteRenderer:
   m_ObjectHideFlags: 0

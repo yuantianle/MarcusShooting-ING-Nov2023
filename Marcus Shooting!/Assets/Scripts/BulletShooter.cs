@@ -23,6 +23,7 @@ public class BulletShooter : MonoBehaviour
     private float _shellEjectInterval = 1f;
 
     private Vector3 _oldAimPosition;
+    private Vector3 _AimPositionOffsetRecord;
 
 
     void Awake()
@@ -40,7 +41,7 @@ public class BulletShooter : MonoBehaviour
             {
                 UpdateFlameBullet();
             }
-            else
+            else if (_currentWeapon.weaponName != "Pistol")
             {
                 if (Time.time > _nextFireTime)
                 {
@@ -62,6 +63,14 @@ public class BulletShooter : MonoBehaviour
             {
                 ActivateFlameBullet();
             }
+            else if (_currentWeapon.weaponName == "Pistol")
+            {
+                DiscontinueShoot();
+            }
+            else if (_currentWeapon.weaponName == "LaserGun")
+            {
+                AudioManager.Instance.PlayWeaponSFX("LaserGun");
+            }
 
             _isShooting = true;
         }
@@ -71,8 +80,60 @@ public class BulletShooter : MonoBehaviour
             {
                 DeactivateFlameBullet();
             }
+            else if (_currentWeapon.weaponName == "LaserGun")
+            {
+                AudioManager.Instance.StopPlayGun("LaserGun");
+            }
             _isShooting = false;
         }
+    }
+
+    private void DiscontinueShoot()
+    {
+        Vector3 Direction = _player.playerDirection ? Vector3.right : Vector3.left;
+        Vector3 spawnPosition = transform.position + Direction * _bulletSpawnDistance;
+
+        _numTrack = _currentWeapon.numTrack;
+
+        // Shooting the bullet
+
+        AudioManager.Instance.PlayWeaponSFX("Pistol");
+
+        GameObject bullet = Instantiate(_currentWeapon.bulletPrefab, spawnPosition, transform.rotation);
+        bullet.GetComponent<Bullet>().explosionProbability = _currentWeapon.explosionProbability;
+        bullet.GetComponent<Bullet>().explosionRadius = _currentWeapon.explosionRadius;
+        bullet.GetComponent<Bullet>().attack = _currentWeapon.weaponAttack;
+
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+            rb.velocity = Direction * _currentWeapon.bulletSpeed;
+        }
+
+        // Shooting the gun fire effect
+        if (_currentWeapon.gunShootEffect != null)
+        {
+            GameObject gunFire = Instantiate(_currentWeapon.gunShootEffect, spawnPosition, transform.rotation);
+            gunFire.transform.localScale = new Vector3(_player.playerDirection ? 1f : -1f, 1f, 1f);
+        }
+
+        // Ejecting the shell
+        Vector3 shellspawnPositon = transform.position + (-1) * Direction * (_bulletSpawnDistance);
+        GameObject shell = Instantiate(_currentWeapon.shellPrefab, shellspawnPositon, Quaternion.identity);
+        Rigidbody2D shellRb = shell.GetComponent<Rigidbody2D>();
+        if (shellRb != null)
+        {
+            shellRb.mass = 0.5f;
+            _shellEjectDirection.x = Mathf.Abs(_shellEjectDirection.x) * Direction.x * (-1);
+            shellRb.velocity = _shellEjectDirection;
+            shellRb.isKinematic = false;
+        }
+
+        // Recoil
+        //change player is recolic
+        _player.gameObject.GetComponent<Marcus>()._isRecoil = true;
+
     }
 
     private void ShootBullet()
@@ -96,20 +157,13 @@ public class BulletShooter : MonoBehaviour
                 case "MachineGun":
                     AudioManager.Instance.PlayWeaponSFX("MachineGun");
                     break;
-                //case "FireGun":
-                //    AudioManager.Instance.PlayWeaponSFX("FireGun");
-                //    break;
-                case "TripleGun":
-                    AudioManager.Instance.PlayWeaponSFX("TripleGun");
-                    break;
                 default:
                     break;
             }
-            float currentExplosionProbability = _currentWeapon.explosionProbability;
-            float currentExplosionRadius = _currentWeapon.explosionRadius;
             GameObject bullet = Instantiate(_currentWeapon.bulletPrefab, spawnPosition, transform.rotation);
-            bullet.GetComponent<Bullet>().explosionProbability = currentExplosionProbability;
-            bullet.GetComponent<Bullet>().explosionRadius = currentExplosionRadius;
+            bullet.GetComponent<Bullet>().explosionProbability = _currentWeapon.explosionProbability;
+            bullet.GetComponent<Bullet>().explosionRadius = _currentWeapon.explosionRadius;
+            bullet.GetComponent<Bullet>().attack = _currentWeapon.weaponAttack;
 
             Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
             if (rb != null)
@@ -123,42 +177,46 @@ public class BulletShooter : MonoBehaviour
             float totalAngleRange = 10f;
             float angleStep = totalAngleRange / (_numTrack - 1);
             float startAngle = -totalAngleRange / 2;
+            GameObject bullet = null;
             for (int i = 0; i < _numTrack; i++)
             {
                 switch (_currentWeapon.weaponName)
                 {
-                    case "Pistol":
-                        AudioManager.Instance.PlayWeaponSFX("Pistol");
-                        break;
                     case "MaskinPistol":
                         AudioManager.Instance.PlayWeaponSFX("MaskinPistol");
                         break;
                     case "MachineGun":
                         AudioManager.Instance.PlayWeaponSFX("MachineGun");
                         break;
-                    //case "FireGun":
-                    //    AudioManager.Instance.PlayWeaponSFX("FireGun");
-                    //    break;
-                    case "TripleGun":
-                        AudioManager.Instance.PlayWeaponSFX("TripleGun");
-                        break;
                     default:
                         break;
                 }
                 float angle = startAngle + angleStep * i;
                 Vector3 bulletDirection = Quaternion.Euler(0, 0, angle) * Direction;
-                GameObject bullet = Instantiate(_currentWeapon.bulletPrefab, spawnPosition, transform.rotation);
-                if (_currentWeapon.weaponName == "TripleGun")
-                {
-                    bullet.GetComponent<VisualEffect>().Play();
-                }
+                bullet = Instantiate(_currentWeapon.bulletPrefab, spawnPosition, transform.rotation);
+                bullet.GetComponent<Bullet>().explosionProbability = _currentWeapon.explosionProbability;
+                bullet.GetComponent<Bullet>().explosionRadius = _currentWeapon.explosionRadius;
+                bullet.GetComponent<Bullet>().attack = _currentWeapon.weaponAttack;
+
                 Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
                     rb.isKinematic = false;
                     rb.velocity = bulletDirection * _currentWeapon.bulletSpeed;
+                    rb.mass = 0.3f;
                 }
             }
+            if (_currentWeapon.weaponName == "TripleGun")
+            {
+                AudioManager.Instance.PlayWeaponSFX("TripleGun");
+            }
+        }
+
+        // Shooting the gun fire effect
+        if (_currentWeapon.gunShootEffect != null)
+        {
+            GameObject gunFire = Instantiate(_currentWeapon.gunShootEffect, spawnPosition, transform.rotation);
+            gunFire.transform.localScale = new Vector3(_player.playerDirection ? 1f : -1f, 1f, 1f);
         }
 
         // Ejecting the shell
@@ -185,17 +243,19 @@ public class BulletShooter : MonoBehaviour
         Vector3 spawnPosition = transform.position + Direction * _bulletSpawnDistance;
 
         if (_flameBullet == null)
-        {// initialize the flame bullet
-            float currentExplosionProbability = _currentWeapon.explosionProbability;
-            float currentExplosionRadius = _currentWeapon.explosionRadius;
+        {
+            // initialize the flame bullet
             _flameBullet = Instantiate(_currentWeapon.bulletPrefab, spawnPosition, transform.rotation);
-            _flameBullet.GetComponent<Bullet>().explosionProbability = currentExplosionProbability;
-            _flameBullet.GetComponent<Bullet>().explosionRadius = currentExplosionRadius;
+            _flameBullet.GetComponent<Bullet>().explosionProbability = _currentWeapon.explosionProbability; ;
+            _flameBullet.GetComponent<Bullet>().explosionRadius = _currentWeapon.explosionRadius;
+            _flameBullet.GetComponent<Bullet>().attack = _currentWeapon.weaponAttack;
+            _AimPositionOffsetRecord = _flameBullet.transform.Find("Aim").localPosition;
+
         }
         _flameBullet.SetActive(true);
 
         // initialize the aim position
-        _oldAimPosition = _flameBullet.transform.Find("Aim").position - _flameBullet.transform.position;
+        _oldAimPosition = _AimPositionOffsetRecord;
 
         //play the weapon switch SFX
         AudioManager.Instance.PlayWeaponSFX("FireGun");
@@ -208,6 +268,13 @@ public class BulletShooter : MonoBehaviour
         Vector3 spawnPosition = transform.position + Direction * _bulletSpawnDistance;
         _flameBullet.transform.localScale = new Vector3(_player.playerDirection ? 1f : -1f, 1f, 1f);
         _flameBullet.transform.position = spawnPosition;
+
+        // Shooting the gun fire effect
+        if (_currentWeapon.gunShootEffect != null)
+        {
+            GameObject gunFire = Instantiate(_currentWeapon.gunShootEffect, spawnPosition, transform.rotation);
+            gunFire.transform.localScale = new Vector3(_player.playerDirection ? 1f : -1f, 1f, 1f);
+        }
 
         // play the flame bullet VFX
         VisualEffect flameVFX = _flameBullet.GetComponent<VisualEffect>();
@@ -234,7 +301,7 @@ public class BulletShooter : MonoBehaviour
         _player.gameObject.GetComponent<Marcus>()._isRecoil = true;
 
         // Aim
-        _flameBullet.transform.Find("Aim").localScale = new Vector3(_player.playerDirection ? 1f : -1f, 1f, 1f);
+        //_flameBullet.transform.Find("Aim").localScale = new Vector3(_player.playerDirection ? 1f : -1f, 1f, 1f);
         StartCoroutine(MoveAimAfterDelay(_flameBullet.transform.Find("Aim")));
     }
 
@@ -265,6 +332,8 @@ public class BulletShooter : MonoBehaviour
     {
         if (_flameBullet != null)
         {
+            //stop coroutines
+            StopAllCoroutines();
             // stop the flame bullet VFX
             VisualEffect flameVFX = _flameBullet.GetComponent<VisualEffect>();
             if (flameVFX != null)

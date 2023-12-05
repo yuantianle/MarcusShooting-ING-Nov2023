@@ -19,8 +19,9 @@ public class Weapon: MonoBehaviour
     [SerializeField] private float _explosionRadius = 0f; // explosion radius
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private Vector3 _gunFirePositionOffset = Vector3.zero;
-    [SerializeField] private GameObject _gunFireEffect;
+    [SerializeField] private GameObject _gunShootEffect;
     [SerializeField] private GameObject _shellPrefab;
+    [SerializeField] private float _weaponAttack;
 
     public string weaponName { get { return _weaponName; } private set { _weaponName = value; } }
     public float bulletSpeed { get { return _bulletSpeed; } private set { _bulletSpeed = value; } }
@@ -39,8 +40,10 @@ public class Weapon: MonoBehaviour
 
     public Vector3 gunFirePositionOffset { get { return _gunFirePositionOffset; } private set { _gunFirePositionOffset = value; } }
 
-    public GameObject gunFireEffect { get { return _gunFireEffect; } private set { _gunFireEffect = value; } }
+    public GameObject gunShootEffect { get { return _gunShootEffect; } private set { _gunShootEffect = value; } }
 
     public GameObject shellPrefab { get { return _shellPrefab; } private set { _shellPrefab = value; } }
+
+    public float weaponAttack { get { return _weaponAttack; } private set { _weaponAttack = value; } }
 
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    public float moveSpeed = 2.0f;
+    public float moveSpeed = 3.0f;
     private Animator animator;
     private Vector3 _moveDirection;
     private bool _facingRight = true;
@@ -12,10 +12,13 @@ public class EnemyAI : MonoBehaviour
     private bool _hasHitGround = false;
     private bool _hasHitWall = false;
     private Material _material;
+    private float _bloodAmount = 100f;
+    private Rigidbody2D _rigidbody;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        _rigidbody = GetComponent<Rigidbody2D>();
         _moveDirection = new Vector3(Random.Range(-1f, 1f), 0, 0).normalized;
         _material = GetComponent<SpriteRenderer>().material;
     }
@@ -44,17 +47,32 @@ public class EnemyAI : MonoBehaviour
             transform.localScale = theScale;
         }
     }
-    public void GetHit()
+    public void GetHit(float attack)
     {
         if (!_isDead)
         {
-            animator.SetTrigger("Hit");
-            animator.SetBool("IsDead", true);
-            _isDead = true;
-            moveSpeed = 0;
-            StartCoroutine(FadeOut());
+            if (_bloodAmount > 0)
+            {
+                _bloodAmount -= attack;
+                transform.Find("Blood").GetComponent<SpriteRenderer>().material.SetFloat("_ThreaShold", _bloodAmount / 100f);
+                if (_bloodAmount <= 0)
+                {
+                    animator.SetTrigger("Hit");
+                    transform.Find("Blood").gameObject.SetActive(false);
+                    animator.SetBool("IsDead", true);
+                    _isDead = true;
+                    moveSpeed = 0;
+                    StartCoroutine(FadeOut());
+                }
+                else
+                {
+                    animator.SetTrigger("Hit");
+                    moveSpeed = 3.0f * _bloodAmount / 100f;
+                }
+            }
         }
     }
+
     IEnumerator FadeOut()
     {
         float duration = 10f;
@@ -83,11 +101,10 @@ public class EnemyAI : MonoBehaviour
         {
             gameObject.layer = LayerMask.NameToLayer("Dead");  // so that the player can walk over the dead enemy
             _hasHitGround = true;
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (_rigidbody != null)
             {
-                rb.velocity = Vector2.zero;
-                rb.isKinematic = true;
+                _rigidbody.velocity = Vector2.zero;
+                _rigidbody.isKinematic = true;
             }
         }
     }

@@ -101,10 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f3bbe16768bc7a4fb0632b89654d006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionEffectPrefab: {fileID: 8744476887960966432, guid: db54dfac58e14ea4680bbaa899b8e637, type: 3}
-  explosionPrefab: {fileID: 5720862684843389668, guid: 9e05ab6b0eba2c84fa3173eb5a971592, type: 3}
+  _collisionEffectPrefab: {fileID: 8744476887960966432, guid: 2f5909bf17caaea41b6310549405ed37, type: 3}
+  _explosionPrefab: {fileID: 5720862684843389668, guid: 9e05ab6b0eba2c84fa3173eb5a971592, type: 3}
   explosionProbability: 0.2
   explosionRadius: 1
+  attack: 0
 --- !u!50 &226814238831349943
 Rigidbody2D:
   serializedVersion: 4
