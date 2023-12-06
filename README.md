@@ -2,16 +2,38 @@
 
 This is a project talking about how to improve the game experience from small details optimization.
 
-## 0. Quick Pics
-![image](https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/8ec8a863-d0f7-4b3d-907e-06ceafe72ebc)
-![image](https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/75693d61-a257-4793-908e-de3f0706bb73)
-![image](https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/b2e74a8a-e557-4319-99e6-6ed66a2693ef)
-![image](https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/59b81fb9-c03e-4a0f-b9f5-8319274d9c6d)
+## 1. Quick Game Exhibit
 
-## 1. Game Design
+<img src="https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/8ec8a863-d0f7-4b3d-907e-06ceafe72ebc" width="800"/>
+
+<img src="https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/75693d61-a257-4793-908e-de3f0706bb73" width="800"/>
+
+<img src="https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/b2e74a8a-e557-4319-99e6-6ed66a2693ef" width="800"/>
+
+<img src="https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/59b81fb9-c03e-4a0f-b9f5-8319274d9c6d" width="800"/>
+
+## 2. Game Design
 ![image](https://github.com/yuantianle/SimpleShootingGame-ING-Nov2023/assets/61530469/309d7f62-902f-4035-9f7e-91d6a0e25ed0)
 
-## 2. TO-DO List
+## 3. Weapon System
+
+### Pistol
+![1 1](https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/b84fc2b3-42e4-4e79-a44a-0b8e47db8acf)
+
+### Maskin Gun
+![2 1](https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/7e98c388-8330-4f9f-b93c-3de18ba5aea0)
+
+### Machine Gun
+![3 1](https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/a7d45ade-c398-4931-b3cb-c20d89331b92)
+
+### Triple Ice Gun
+![4 1](https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/906a3bb7-f787-4fa3-ae9d-ecc4f68b16f9)
+
+### Laser Black Energy Gun
+![5 1](https://github.com/yuantianle/MarcusShooting-ING-Nov2023/assets/61530469/ba19780e-5227-476b-96fb-2eab4160bcae)
+
+
+## 4. TO-DO List
 ### Camera
 - [x]  Basic Map and Control and Camera
 - [x]  Add cinema effect view
